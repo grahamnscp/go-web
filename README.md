@@ -1,6 +1,5 @@
-# go-web
+# go-web - a test repo for raw CI with Docker
 
-Test repo for CI with Docker
 
 ## Local test
 
