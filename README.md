@@ -3,9 +3,7 @@
 
 ## Local test
 
-Build a local image:
-
-using local Dockerfile:
+Using local Dockerfile:
 
 ```
 FROM golang
@@ -16,6 +14,8 @@ CMD /go/bin/go-web
 
 EXPOSE 8080
 ```
+
+Build a local image:
 
 ```
   $ docker build -t golang:go-web .
