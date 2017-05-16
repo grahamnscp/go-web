@@ -1,0 +1,32 @@
+
+
+Test build go app:
+
+$ export GOPATH=`pwd`
+$ go install go-web
+
+Run:
+$ bin/go-web
+
+Go test:
+$ cd src/go-web
+$ go test go-web
+ok  	go-web	0.092s
+
+
+
+
+Deploy Jenkins Server:
+
+docker service create --name jenkins-server -p 50000:50000 -p 80:8080 --mount type=bind,src=/tmp/jenkins_home,dst=/var/jenkins_home jenkins
+
+docker exec -it 142d151be42d sh -c "cat /var/jenkins_home/secrets/initialAdminPassword"
+
+$ docker service ls
+ID            NAME            MODE        REPLICAS  IMAGE
+84zsqdxvq42r  jenkins-server  replicated  1/1       jenkins:latest
+
+$ docker ps
+CONTAINER ID        IMAGE                                                                             COMMAND                  CREATED             STATUS              PORTS                 NAMES
+142d151be42d        jenkins@sha256:7bcae67de7046e41326844a1d31841c4acdc2da361c3160697a3e022529068d1   "/bin/tini -- /usr..."   About an hour ago   Up About an hour    8080/tcp, 50000/tcp   jenkins-server.1.m8doqqdxbh8x1qp0vnceqxttq
+

@@ -1,6 +1,6 @@
 FROM golang
 
-ADD ./src /go/src/go-web
+ADD ./src/go-web /go/src/go-web
 RUN go install go-web
 CMD /go/bin/go-web
 

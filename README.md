@@ -34,8 +34,9 @@ Quick test:
   ho
 ```
 
-and stop the container:
+and stop and remove the container:
 
 ```
   $ docker stop go-web
+  $ docker rm go-web
 ```
