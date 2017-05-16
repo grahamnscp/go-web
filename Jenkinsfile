@@ -1,4 +1,4 @@
-# Jenkinsfile for go-web
+// Jenkinsfile for go-web
 
 env.DOCKERHUB_USERNAME = 'grahamnscp'
   
@@ -17,16 +17,16 @@ node("docker-test") {
 
     try {
 
-      # build image
+      // build image
       sh "docker build -t ${APP_NAME} ."
 
-      # clean local source
+      // clean local source
       sh "docker rm -f ${APP_NAME} || true"
 
-      # run container instance of app
+      // run container instance of app
       sh "docker run -d -p 8080:8080 --name=${APP_NAME} ${DOCKERHUB_USERNAME}/${APP_NAME}:${BUILD_NUMBER}"
 
-      # test
+      // test
       sh "docker run --rm -v ${WORKSPACE}:/go/src/${APP_NAME} --link=${APP_NAME} -e SERVER=${APP_NAME} golang go test ${APP_NAME} -v --run Unit"
 
     } catch(e) {
@@ -35,7 +35,7 @@ node("docker-test") {
 
     } finally {
 
-      # test done, clean up
+      // test done, clean up
       sh "docker rm -f ${APP_NAME} || true"
       sh "docker ps -aq | xargs docker rm || true"
       sh "docker images -aq -f dangling=true | xargs docker rmi || true"
