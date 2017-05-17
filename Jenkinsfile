@@ -4,7 +4,7 @@ env.DOCKERHUB_USERNAME = 'grahamnscp'
   
 // this will start an executor on a Jenkins agent with label docker-test
 
-node("docker-test") {
+node("master") {
 
   // Setup variables
   String APP_NAME = "go-web"
