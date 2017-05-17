@@ -10,7 +10,7 @@ import (
 func TestUnit(t *testing.T) {
 
   //resp, err := http.Get("http://HOSTIP:8080/test")
-  resp, err := http.Get("http://192.168.225.1:8080/test")
+  resp, err := http.Get("http://192.168.225.121:8080/test")
   if err != nil {
     t.Error(err)
   }
