@@ -38,7 +38,7 @@ node("docker-test") {
 
       // test done, clean up
       sh "/usr/local/bin/docker rm -f ${APP_NAME} || true"
-      sh "/usr/local/bin/docker rmi $(/usr/local/bin/docker images -a  | grep go-web | awk '{print $3}')
+      //sh "/usr/local/bin/docker rmi $(/usr/local/bin/docker images -a  | grep go-web | awk '{print $3}')
 
       //sh "/usr/local/bin/docker ps -aq | xargs /usr/local/bin/docker rm || true"
       //sh "/usr/local/bin/docker images -aq -f dangling=true | xargs /usr/local/bin/docker rmi || true"
