@@ -27,7 +27,7 @@ node("docker-test") {
       sh "/usr/local/bin/docker run -d -p 8080:8080 --name=${APP_NAME} ${DOCKERHUB_USERNAME}/${APP_NAME}:${BUILD_NUMBER}"
 
       // test
-      sh "/usr/local/bin/docker run --rm -v ${WORKSPACE}:/go/src/${APP_NAME} --link=${APP_NAME} -e SERVER=${APP_NAME} golang go test ${APP_NAME} -v --run Unit"
+      sh "/usr/local/bin/docker run --rm -v ${WORKSPACE}/src/${APP_NAME}:/go/src/${APP_NAME} --link=${APP_NAME} -e SERVER=${APP_NAME} golang go test ${APP_NAME} -v --run Unit"
 
     } catch(e) {
 
