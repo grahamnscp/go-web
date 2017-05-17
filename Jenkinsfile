@@ -20,7 +20,7 @@ node("docker-test") {
       // build image
       sh "/usr/local/bin/docker build -t ${DOCKERHUB_USERNAME}/${APP_NAME}:${BUILD_NUMBER} ."
 
-      // clean local source
+      // clean any existing running container
       //sh "/usr/local/bin/docker rm -f ${APP_NAME} || true"
 
       // run container instance of app
