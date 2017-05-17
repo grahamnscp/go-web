@@ -18,10 +18,10 @@ node("docker-test") {
     try {
 
       // build image
-      sh "/usr/local/bin/docker build -t ${APP_NAME} ."
+      sh "/usr/local/bin/docker build -t ${DOCKERHUB_USERNAME}/${APP_NAME}:${BUILD_NUMBER} ."
 
       // clean local source
-      sh "/usr/local/bin/docker rm -f ${APP_NAME} || true"
+      //sh "/usr/local/bin/docker rm -f ${APP_NAME} || true"
 
       // run container instance of app
       sh "/usr/local/bin/docker run -d -p 8080:8080 --name=${APP_NAME} ${DOCKERHUB_USERNAME}/${APP_NAME}:${BUILD_NUMBER}"
@@ -36,9 +36,9 @@ node("docker-test") {
     } finally {
 
       // test done, clean up
-      sh "/usr/local/bin/docker rm -f ${APP_NAME} || true"
-      sh "/usr/local/bin/docker ps -aq | xargs /usr/local/bin/docker rm || true"
-      sh "/usr/local/bin/docker images -aq -f dangling=true | xargs /usr/local/bin/docker rmi || true"
+      //sh "/usr/local/bin/docker rm -f ${APP_NAME} || true"
+      //sh "/usr/local/bin/docker ps -aq | xargs /usr/local/bin/docker rm || true"
+      //sh "/usr/local/bin/docker images -aq -f dangling=true | xargs /usr/local/bin/docker rmi || true"
     }
   }
 }
